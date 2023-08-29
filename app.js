@@ -4,6 +4,7 @@ const { response } = require("express");
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require("lodash")
 const app = express();
 const fs = require('fs')
 
@@ -18,10 +19,28 @@ app.get("/", function (request, response) {
   response.send("Ali's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
+
 //START OF YOUR CODE...
+app.get("/quotes/", function (request, response) {
+  response.send(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(lodash.sample(quotes));
+});
+
 
 //...END OF YOUR CODE
+app.get("/quotes/search", function (request, response) {
+  const termParam = request.query.term.toLowerCase()
 
+  const result = quotes.filter (function (quote) {
+  const quoteText = quote.quote.toLowerCase()
+  const quoteAuthor = quote.author.toLowerCase()
+  return quoteText.includes(termParam) || quoteAuthor.includes(termParam)
+  })
+  response.send(result);
+});
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
