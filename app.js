@@ -25,6 +25,7 @@ app.get("/quotes/", function (request, response) {
   response.send(quotes);
 });
 
+
 app.get("/quotes/random", function (request, response) {
   response.send(lodash.sample(quotes));
 });
