@@ -7,6 +7,10 @@ const express = require("express");
 const lodash = require("lodash")
 const app = express();
 const fs = require('fs')
+const cors = require('cors')
+
+app.use(cors({origin: "*"} ));
+
 
 //load the quotes JSON
 const quotes = require("./quotes.json");

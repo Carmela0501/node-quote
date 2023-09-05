@@ -1,7 +1,5 @@
 const app = require('./app');
-const cors = require('cors')
 
-app.use(cors())
 
 //Start our server so that it listens for HTTP requests!
 let port = 5000;
