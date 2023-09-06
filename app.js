@@ -9,7 +9,7 @@ const app = express();
 const fs = require('fs')
 const cors = require('cors')
 
-app.use(cors({origin: "*"} ));
+app.use(cors({origin: "https://breezy-fluorescent-vacation.glitch.me/quotes/random"} ));
 
 
 //load the quotes JSON
